@@ -1,0 +1,59 @@
+"""
+ZigZag Conversion
+
+This solution implements the ZigZag Conversion problem from LeetCode.
+
+Problem Description:
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this:
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows.
+
+Solution Approach:
+1. If the number of rows is 1 or greater than or equal to the length of the string, return the original string.
+2. Create an array of empty strings, one for each row.
+3. Iterate through the input string, adding each character to the appropriate row.
+4. Use a 'step' variable to determine whether to move down or up in the zigzag pattern.
+5. Join all the rows and return the result.
+
+Time Complexity: O(n), where n is the length of the input string.
+Space Complexity: O(n), as we store all characters in the rows array.
+
+Example:
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+
+Note:
+This solution efficiently handles the zigzag pattern without actually creating a 2D structure,
+making it memory-efficient for large inputs.
+"""
+
+#solution
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if numRows == 1 or numRows >= len(s):
+            return s
+
+        rows = [''] * numRows
+        current_row = 0
+        step = 1
+
+        for char in s:
+            rows[current_row] += char
+            
+            if current_row == 0:
+                step = 1
+            elif current_row == numRows - 1:
+                step = -1
+            
+            current_row += step
+
+        return ''.join(rows)
