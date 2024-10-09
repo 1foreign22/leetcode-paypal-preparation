@@ -1,5 +1,3 @@
-Here's a more visually appealing and organized version of your README for GitHub, with some emojis and formatting tweaks to make it look colorful and inviting:
-
 ---
 
 # 🌟 LeetCode Answers - PayPal Prep
